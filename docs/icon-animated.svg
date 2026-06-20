@@ -1,0 +1,231 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#0c112b"/>
+      <stop offset="100%" stop-color="#050714"/>
+    </radialGradient>
+
+    <!-- Brand Gradients -->
+    <linearGradient id="purpleGreenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <linearGradient id="purpleCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#00f0ff"/>
+    </linearGradient>
+    <linearGradient id="cyanGreenGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+
+    <!-- Glow Filters -->
+    <filter id="glowSubtle" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glowIntense" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <style>
+      /* Enclave Shield rotation */
+      .hud-rotate-cw {
+        transform-origin: 256px 256px;
+        animation: spin-cw 30s linear infinite;
+      }
+      .hud-rotate-ccw {
+        transform-origin: 256px 256px;
+        animation: spin-ccw 25s linear infinite;
+      }
+
+      /* Orbit Rotators with 3D Angles */
+      .orbit-1 {
+        transform-origin: 256px 256px;
+        animation: spin-cw 12s linear infinite;
+      }
+      .orbit-2 {
+        transform-origin: 256px 256px;
+        animation: spin-ccw 16s linear infinite;
+      }
+      .orbit-3 {
+        transform-origin: 256px 256px;
+        animation: spin-cw 20s linear infinite;
+      }
+
+      @keyframes spin-cw {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes spin-ccw {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(-360deg); }
+      }
+
+      /* Consensus Core Radiation */
+      .radar-pulse {
+        transform-origin: 256px 260px;
+        animation: radar-wave 3s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+      }
+      @keyframes radar-wave {
+        0% {
+          r: 20;
+          opacity: 0.8;
+          stroke-width: 1.5;
+        }
+        100% {
+          r: 95;
+          opacity: 0;
+          stroke-width: 0.5;
+        }
+      }
+
+      /* Holographic Temple Pulse */
+      .hologram-temple {
+        animation: holo-pulse 4s ease-in-out infinite alternate;
+      }
+      @keyframes holo-pulse {
+        0% {
+          opacity: 0.75;
+          filter: drop-shadow(0 0 4px rgba(168, 85, 247, 0.4)) drop-shadow(0 0 10px rgba(34, 197, 94, 0.2));
+        }
+        100% {
+          opacity: 0.95;
+          filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.6)) drop-shadow(0 0 20px rgba(0, 240, 255, 0.4));
+        }
+      }
+
+      /* Node scale pulse */
+      .node-pulse {
+        animation: pulse-scale 1.5s ease-in-out infinite alternate;
+      }
+      @keyframes pulse-scale {
+        from { r: 9; }
+        to { r: 12; }
+      }
+
+      /* Data Flow Up the Pillars */
+      .flow-up-purple {
+        stroke-dasharray: 8 6;
+        animation: flow-up 2s linear infinite;
+      }
+      .flow-up-cyan {
+        stroke-dasharray: 8 6;
+        animation: flow-up 1.5s linear infinite;
+      }
+      .flow-up-green {
+        stroke-dasharray: 8 6;
+        animation: flow-up 2s linear infinite;
+      }
+      @keyframes flow-up {
+        from { stroke-dashoffset: 0; }
+        to { stroke-dashoffset: -28; }
+      }
+    </style>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="100%" height="100%" fill="url(#bgGrad)" rx="96"/>
+
+  <!-- Holographic Technical Grid -->
+  <g opacity="0.08" stroke="#ffffff" stroke-width="0.5">
+    <path d="M 0 32 H 512 M 0 64 H 512 M 0 96 H 512 M 0 128 H 512 M 0 160 H 512 M 0 192 H 512 M 0 224 H 512 M 0 256 H 512 M 0 288 H 512 M 0 320 H 512 M 0 352 H 512 M 0 384 H 512 M 0 416 H 512 M 0 448 H 512 M 0 480 H 512"/>
+    <path d="M 32 0 V 512 M 64 0 V 512 M 96 0 V 512 M 128 0 V 512 M 160 0 V 512 M 192 0 V 512 M 224 0 V 512 M 256 0 V 512 M 288 0 V 512 M 320 0 V 512 M 352 0 V 512 M 384 0 V 512 M 416 0 V 512 M 448 0 V 512 M 480 0 V 512"/>
+    <circle cx="256" cy="256" r="128" fill="none" stroke-width="1"/>
+    <circle cx="256" cy="256" r="192" fill="none" stroke-width="1"/>
+  </g>
+
+  <!-- ==================== TEE SHIELD boundary (HUD style) ==================== -->
+  
+  <!-- Outer Compass Ring -->
+  <circle cx="256" cy="256" r="236" fill="none" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1.5"/>
+  
+  <!-- Rotating Tech Ring 1 (Segmented, Purple-Green) -->
+  <circle class="hud-rotate-cw" cx="256" cy="256" r="226" fill="none" stroke="url(#purpleGreenGrad)" stroke-width="2" stroke-dasharray="160 40 20 40" opacity="0.35" filter="url(#glowSubtle)"/>
+  
+  <!-- Rotating Tech Ring 2 (Dotted, Cyan) -->
+  <circle class="hud-rotate-ccw" cx="256" cy="256" r="218" fill="none" stroke="#00f0ff" stroke-width="1" stroke-dasharray="4 12" opacity="0.4"/>
+
+  <!-- Static Tech Crosshairs -->
+  <g opacity="0.2" stroke="url(#purpleGreenGrad)" stroke-width="1.5">
+    <path d="M 256 12 V 22 M 256 490 V 500 M 12 256 H 22 M 490 256 H 500"/>
+    <path d="M 256 256 m -236 0 L 256 256 M 256 256 l 236 0" stroke-dasharray="4 8" stroke-width="1"/>
+    <path d="M 256 256 m 0 -236 L 256 256 M 256 256 l 0 236" stroke-dasharray="4 8" stroke-width="1"/>
+  </g>
+
+  <!-- ==================== 3D PERSPECTIVE ORBITS (Tilted Ellipses) ==================== -->
+  
+  <!-- Inner Orbit: Treasury (Purple) - Tilted -30deg -->
+  <g class="orbit-1" transform="rotate(-30 256 256)">
+    <ellipse cx="256" cy="256" rx="145" ry="110" fill="none" stroke="rgba(168, 85, 247, 0.15)" stroke-width="1.5" stroke-dasharray="40 20 10 20"/>
+    <circle class="node-pulse" cx="111" cy="256" r="10" fill="#a855f7" filter="url(#glowIntense)"/>
+    <circle cx="111" cy="256" r="4" fill="#ffffff"/>
+  </g>
+
+  <!-- Middle Orbit: Compliance (Green) - Tilted +30deg -->
+  <g class="orbit-2" transform="rotate(30 256 256)">
+    <ellipse cx="256" cy="256" rx="175" ry="130" fill="none" stroke="rgba(34, 197, 94, 0.15)" stroke-width="1.5" stroke-dasharray="20 30"/>
+    <circle class="node-pulse" cx="431" cy="256" r="10" fill="#22c55e" filter="url(#glowIntense)"/>
+    <circle cx="431" cy="256" r="4" fill="#ffffff"/>
+  </g>
+
+  <!-- Outer Orbit: Executor (Cyan) - Vertical Tilted 85deg -->
+  <g class="orbit-3" transform="rotate(85 256 256)">
+    <ellipse cx="256" cy="256" rx="200" ry="150" fill="none" stroke="rgba(0, 240, 255, 0.15)" stroke-width="1.5" stroke-dasharray="100 50"/>
+    <circle class="node-pulse" cx="256" cy="56" r="10" fill="#00f0ff" filter="url(#glowIntense)"/>
+    <circle cx="256" cy="56" r="4" fill="#ffffff"/>
+  </g>
+
+  <!-- ==================== HOLOGRAPHIC TEMPLE CORE ==================== -->
+  
+  <!-- Consensus Wave Generator -->
+  <circle class="radar-pulse" cx="256" cy="260" r="20" fill="none" stroke="url(#purpleGreenGrad)" stroke-width="1" filter="url(#glowSubtle)"/>
+  <circle class="radar-pulse" cx="256" cy="260" r="20" fill="none" stroke="#00f0ff" stroke-width="1" filter="url(#glowSubtle)" style="animation-delay: 1.5s;"/>
+
+  <g class="hologram-temple">
+    <!-- Temple Platform / Foundation (Neon Layered Steps) -->
+    <!-- Lower Base -->
+    <path d="M 125 330 H 387 V 338 H 125 Z" fill="rgba(168, 85, 247, 0.12)" stroke="#a855f7" stroke-width="2" filter="url(#glowSubtle)"/>
+    <!-- Upper Base -->
+    <path d="M 148 316 H 364 V 324 H 148 Z" fill="rgba(255, 255, 255, 0.1)" stroke="url(#purpleGreenGrad)" stroke-width="2"/>
+
+    <!-- Pillars (Glowing Glassmorphic Columns representing the three specialists) -->
+    <!-- Pillar Left (Treasury Specialist - Purple) -->
+    <rect x="174" y="222" width="20" height="94" rx="4" fill="rgba(168, 85, 247, 0.04)" stroke="#a855f7" stroke-width="2" filter="url(#glowSubtle)"/>
+    <line class="flow-up-purple" x1="184" y1="222" x2="184" y2="316" stroke="#a855f7" stroke-width="1.5" opacity="0.8"/>
+    
+    <!-- Pillar Center (Executor Specialist - Cyan) -->
+    <rect x="246" y="212" width="20" height="104" rx="4" fill="rgba(0, 240, 255, 0.04)" stroke="#00f0ff" stroke-width="2.5" filter="url(#glowSubtle)"/>
+    <line class="flow-up-cyan" x1="256" y1="212" x2="256" y2="316" stroke="#00f0ff" stroke-width="1.5" opacity="0.9"/>
+
+    <!-- Pillar Right (Compliance Specialist - Green) -->
+    <rect x="318" y="222" width="20" height="94" rx="4" fill="rgba(34, 197, 94, 0.04)" stroke="#22c55e" stroke-width="2" filter="url(#glowSubtle)"/>
+    <line class="flow-up-green" x1="328" y1="222" x2="328" y2="316" stroke="#22c55e" stroke-width="1.5" opacity="0.8"/>
+
+    <!-- Column Tops & Capitals -->
+    <path d="M 170 216 H 198 V 222 H 170 Z" fill="#a855f7"/>
+    <path d="M 242 206 H 270 V 212 H 242 Z" fill="#00f0ff"/>
+    <path d="M 314 216 H 342 V 222 H 314 Z" fill="#22c55e"/>
+
+    <!-- Architrave / Roof (Glowing Triangle HUD) -->
+    <!-- Outer Triangle -->
+    <path d="M 256 136 L 377 200 H 135 Z" fill="rgba(12, 17, 43, 0.85)" stroke="url(#purpleGreenGrad)" stroke-width="3" filter="url(#glowSubtle)"/>
+    <!-- Inner Geometric Triangle Chevron -->
+    <path d="M 256 156 L 344 194 H 168 Z" fill="none" stroke="url(#purpleCyanGrad)" stroke-width="1.5" stroke-dasharray="8 4"/>
+    <!-- Apex Beacon -->
+    <circle cx="256" cy="136" r="4" fill="#ffffff" filter="url(#glowIntense)"/>
+
+    <!-- Central Floating Consensus Node -->
+    <circle cx="256" cy="260" r="16" fill="#050714" stroke="url(#purpleGreenGrad)" stroke-width="3.5" filter="url(#glowSubtle)"/>
+    <circle cx="256" cy="260" r="6" fill="#00f0ff" filter="url(#glowIntense)"/>
+  </g>
+
+</svg>

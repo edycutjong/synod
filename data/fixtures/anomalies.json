@@ -1,0 +1,35 @@
+[
+  {
+    "id": "anomaly_boundary_violation",
+    "description": "Amount exceeds threshold (Veto Condition)",
+    "payoutId": "payout_anomaly_1",
+    "amount": 10001,
+    "limit": 10000,
+    "recipient": "recipient_1@example.com",
+    "salt": "salt_secret_1",
+    "forcePairingFail": false,
+    "forceHttpFailCode": null
+  },
+  {
+    "id": "anomaly_invalid_zk_proof",
+    "description": "Secret amount doesn't match public inputs or pairing fails (Abort Condition)",
+    "payoutId": "payout_anomaly_2",
+    "amount": 12000,
+    "limit": 10000,
+    "recipient": "recipient_2@example.com",
+    "salt": "salt_secret_2",
+    "forcePairingFail": true,
+    "forceHttpFailCode": null
+  },
+  {
+    "id": "anomaly_egress_outage",
+    "description": "Downstream payout API returns 503 (Atomic Rollback Condition)",
+    "payoutId": "payout_anomaly_3",
+    "amount": 5000,
+    "limit": 10000,
+    "recipient": "recipient_3@example.com",
+    "salt": "salt_secret_3",
+    "forcePairingFail": false,
+    "forceHttpFailCode": 503
+  }
+]

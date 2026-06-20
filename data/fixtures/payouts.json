@@ -1,0 +1,14 @@
+{
+  "payout_2281": {
+    "id": "payout_2281",
+    "amount": 15000,
+    "recipient": "{{profile.verified_contacts.email.value}}",
+    "target_host": "https://treasury.sandbox.test"
+  },
+  "payout_2282": {
+    "id": "payout_2282",
+    "amount": 5000,
+    "recipient": "{{profile.verified_contacts.email.value}}",
+    "target_host": "https://treasury.sandbox.test"
+  }
+}

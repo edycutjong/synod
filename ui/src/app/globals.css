@@ -1,0 +1,55 @@
+@import '../../../docs/assets/_tokens.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-hi);
+  font-family: var(--font-ui);
+}
+
+/* Custom glow animations and classes */
+.neon-glow-primary {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.15), 0 0 40px rgba(168, 85, 247, 0.05);
+}
+
+.neon-glow-accent {
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.15), 0 0 40px rgba(34, 197, 94, 0.05);
+}
+
+.neon-glow-veto {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.15), 0 0 40px rgba(239, 68, 68, 0.05);
+}
+
+.neon-text-primary {
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.neon-text-accent {
+  text-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+}
+
+.neon-text-veto {
+  text-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+

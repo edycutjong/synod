@@ -1,0 +1,8 @@
+[workspace]
+members = [
+    "coordinator",
+    "approver-a",
+    "approver-b",
+    "executor"
+]
+resolver = "2"
