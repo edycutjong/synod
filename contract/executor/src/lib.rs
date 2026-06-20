@@ -246,3 +246,59 @@ impl exports::synod::agent::contracts::Guest for Component {
 
 #[cfg(target_arch = "wasm32")]
 export!(Component);
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use k256::elliptic_curve::sec1::ToEncodedPoint;
+
+    #[test]
+    fn test_ecies_decryption() {
+        use aes_gcm::aead::Aead;
+        use aes_gcm::{Aes256Gcm, KeyInit};
+
+        // 1. Setup keys
+        let enclave_sk_bytes = hex::decode(ENCLAVE_PRIVATE_KEY).unwrap();
+        let enclave_sk = k256::SecretKey::from_slice(&enclave_sk_bytes).unwrap();
+        let enclave_pk = enclave_sk.public_key();
+
+        let ephemeral_sk_bytes = hex::decode("b29d2f6ee9011fab5046eb7190f47c216e52438fa0fba67516e7c1e376673e9b").unwrap();
+        let ephemeral_sk = k256::SecretKey::from_slice(&ephemeral_sk_bytes).unwrap();
+        let ephemeral_pk = ephemeral_sk.public_key();
+
+        // 2. Perform ECDH on sender side (ephemeral SK + enclave PK)
+        let shared_secret = k256::ecdh::diffie_hellman(ephemeral_sk.to_nonzero_scalar(), enclave_pk.as_affine());
+        let shared_secret_bytes = shared_secret.raw_secret_bytes();
+
+        // 3. HKDF key expansion
+        let hk = hkdf::Hkdf::<sha2::Sha256>::new(None, shared_secret_bytes.as_slice());
+        let mut okm = [0u8; 44];
+        hk.expand(&[], &mut okm).unwrap();
+        let key_bytes = &okm[0..32];
+        let derived_iv = &okm[32..44];
+
+        // 4. Encrypt using AES-GCM
+        let cipher = Aes256Gcm::new_from_slice(key_bytes).unwrap();
+        let plaintext = b"{\"recipient_account\": \"test_recipient\", \"amount\": 1337}";
+        
+        let encrypted_data = cipher.encrypt(derived_iv.into(), &plaintext[..]).unwrap();
+        // Split ciphertext and auth tag (last 16 bytes for AES-GCM tag)
+        let tag_start = encrypted_data.len() - 16;
+        let ciphertext = &encrypted_data[0..tag_start];
+        let auth_tag = &encrypted_data[tag_start..];
+
+        // 5. Package into EciesEnvelope
+        let envelope = EciesEnvelope {
+            ephemeral_public_key: hex::encode(ephemeral_pk.to_encoded_point(false).as_bytes()),
+            iv: "".to_string(), // Empty iv means use derived_iv
+            ciphertext: hex::encode(ciphertext),
+            auth_tag: hex::encode(auth_tag),
+        };
+
+        // 6. Decrypt
+        let result = decrypt_ecies_payload(&envelope);
+        assert!(result.is_ok());
+        assert_eq!(result.unwrap(), "{\"recipient_account\": \"test_recipient\", \"amount\": 1337}");
+    }
+}
+
