@@ -9,7 +9,7 @@
 
   [![Live Demo](https://img.shields.io/badge/🚀_Live-Demo-06b6d4?style=for-the-badge)](https://synod.edycu.dev)
   [![Pitch Video](https://img.shields.io/badge/🎬_Pitch-Video-ef4444?style=for-the-badge)](https://youtu.be/your-video)
-  [![Pitch Deck](https://img.shields.io/badge/📊_Pitch-Deck-f59e0b?style=for-the-badge)](https://synod.edycu.dev)
+  [![Pitch Deck](https://img.shields.io/badge/📊_Pitch-Deck-f59e0b?style=for-the-badge)](https://synod.edycu.dev/pitch.html)
   [![Built for DoraHacks](https://img.shields.io/badge/DoraHacks-Terminal%203%20ADK%20Hackathon-8b5cf6?style=for-the-badge)](https://dorahacks.io/hackathon/t3adk-launch-2026)
 
   <br/>
@@ -23,7 +23,7 @@
   ![T3 ADK](https://img.shields.io/badge/T3_ADK-8b5cf6?style=flat)
   ![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=flat&logo=playwright&logoColor=white)
   ![Jest](https://img.shields.io/badge/Jest-C21325?style=flat&logo=jest&logoColor=white)
-  [![CI](https://github.com/edycu/synod/actions/workflows/ci.yml/badge.svg)](https://github.com/edycu/synod/actions/workflows/ci.yml)
+  [![CI](https://github.com/edycutjong/synod/actions/workflows/ci.yml/badge.svg)](https://github.com/edycutjong/synod/actions/workflows/ci.yml)
 
 </div>
 
