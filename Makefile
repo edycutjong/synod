@@ -1,4 +1,4 @@
-.PHONY: help bootstrap build test lint typecheck ci e2e lighthouse security-scan
+.PHONY: help bootstrap build test lint typecheck ci e2e lighthouse security-scan repo-details
 
 help:
 	@echo "Synod Build and Testing Automation Harness"
@@ -12,6 +12,8 @@ help:
 	@echo "e2e              - Execute Playwright end-to-end tests (demo mode)"
 	@echo "lighthouse       - Run Lighthouse CI audit on the UI dashboard"
 	@echo "security-scan    - Run vulnerability audits and license compliance checks"
+	@echo "repo-details     - Update the GitHub repository details (description, website, topics)"
+
 
 bootstrap:
 	npm run bootstrap
@@ -42,3 +44,7 @@ security-scan:
 	npm run audit
 	@echo "🔍 Running License Checker..."
 	npx license-checker --production --failOn "GPL-3.0;AGPL-3.0" --summary || true
+
+repo-details:
+	gh repo edit edycutjong/synod --description "Atomic multi-agent transactional orchestration engine running inside Intel TDX TEE boundary with 100% cryptographic rollback guarantees, powered by Terminal 3 ADK." --homepage "https://synod.edycu.dev" --add-topic "nextjs,react,wasm,tee,intel-tdx,multi-agent,governance,secp256k1,cryptography,hackathon,terminal3"
+
