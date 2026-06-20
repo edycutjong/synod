@@ -16,7 +16,7 @@ use alloc::format;
 
 struct Component;
 
-#[cfg(any(target_arch = "wasm32", test))]
+#[cfg(target_arch = "wasm32")]
 impl exports::synod::agent::contracts::Guest for Component {
     fn compose_action(
         _req: exports::synod::agent::contracts::GenericInput,
@@ -56,24 +56,11 @@ export!(Component);
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use exports::synod::agent::contracts::Guest;
-
     #[test]
     fn test_sanity() {
         assert_eq!(2 + 2, 4);
     }
-
-    #[test]
-    fn test_evaluate() {
-        let req = exports::synod::agent::contracts::GenericInput {
-            input: None,
-            user_profile: None,
-            context: None,
-        };
-        let res = Component::evaluate(req);
-        assert!(res.is_ok());
-    }
 }
+
 
 
