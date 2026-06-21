@@ -3,7 +3,19 @@
     "synod:coord:payout_2282_uvof": "{\"id\":\"payout_2282_uvof\",\"status\":\"committed\",\"payoutDetails\":\"recipient: 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC, amount: 5000\"}",
     "synod:step:payout_2282_uvof:0": "{\"agentId\":\"approver-a\",\"decision\":\"approved\",\"reason\":\"Always approve (Treasury policy matches)\"}",
     "synod:step:payout_2282_uvof:1": "{\"agentId\":\"approver-b\",\"decision\":\"approved\",\"reason\":\"Groth16 ZK-SNARK verification successful\"}",
-    "synod:step:payout_2282_uvof:2": "{\"agentId\":\"executor\",\"decision\":\"approved\",\"reason\":\"Blind payout webhook settled, VC issued\"}"
+    "synod:step:payout_2282_uvof:2": "{\"agentId\":\"executor\",\"decision\":\"approved\",\"reason\":\"Blind payout webhook settled, VC issued\"}",
+    "synod:coord:payout_2282_qlb7": "{\"id\":\"payout_2282_qlb7\",\"status\":\"committed\",\"payoutDetails\":\"recipient: 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC, amount: 5000\"}",
+    "synod:step:payout_2282_qlb7:0": "{\"agentId\":\"approver-a\",\"decision\":\"approved\",\"reason\":\"Always approve (Treasury policy matches)\"}",
+    "synod:step:payout_2282_qlb7:1": "{\"agentId\":\"approver-b\",\"decision\":\"approved\",\"reason\":\"Groth16 ZK-SNARK verification successful\"}",
+    "synod:step:payout_2282_qlb7:2": "{\"agentId\":\"executor\",\"decision\":\"approved\",\"reason\":\"Blind payout webhook settled, VC issued\"}",
+    "synod:coord:payout_2282_noh8": "{\"id\":\"payout_2282_noh8\",\"status\":\"committed\",\"payoutDetails\":\"recipient: 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC, amount: 5000\"}",
+    "synod:step:payout_2282_noh8:0": "{\"agentId\":\"approver-a\",\"decision\":\"approved\",\"reason\":\"Always approve (Treasury policy matches)\"}",
+    "synod:step:payout_2282_noh8:1": "{\"agentId\":\"approver-b\",\"decision\":\"approved\",\"reason\":\"Groth16 ZK-SNARK verification successful\"}",
+    "synod:step:payout_2282_noh8:2": "{\"agentId\":\"executor\",\"decision\":\"approved\",\"reason\":\"Blind payout webhook settled, VC issued\"}",
+    "synod:coord:payout_2282_1bmn": "{\"id\":\"payout_2282_1bmn\",\"status\":\"committed\",\"payoutDetails\":\"recipient: 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC, amount: 5000\"}",
+    "synod:step:payout_2282_1bmn:0": "{\"agentId\":\"approver-a\",\"decision\":\"approved\",\"reason\":\"Always approve (Treasury policy matches)\"}",
+    "synod:step:payout_2282_1bmn:1": "{\"agentId\":\"approver-b\",\"decision\":\"approved\",\"reason\":\"Groth16 ZK-SNARK verification successful\"}",
+    "synod:step:payout_2282_1bmn:2": "{\"agentId\":\"executor\",\"decision\":\"approved\",\"reason\":\"Blind payout webhook settled, VC issued\"}"
   },
   "specialists": [
     {
@@ -50,7 +62,398 @@
       "target_host": "https://treasury.sandbox.test"
     }
   },
-  "telemetryLogs": [],
+  "telemetryLogs": [
+    {
+      "timestamp": 1782036015708,
+      "type": "agent",
+      "message": "Received incoming compose-action request from client"
+    },
+    {
+      "timestamp": 1782036015709,
+      "type": "enclave",
+      "message": "Coordinator: Starting composed action flow for payoutId: payout_2282_qlb7"
+    },
+    {
+      "timestamp": 1782036015711,
+      "type": "enclave",
+      "message": "Coordinator: Starting compose_action..."
+    },
+    {
+      "timestamp": 1782036015714,
+      "type": "enclave",
+      "message": "Coordinator: Staged transaction payout_2282_qlb7 as submitting"
+    },
+    {
+      "timestamp": 1782036015714,
+      "type": "enclave",
+      "message": "Coordinator: Invoking Approver A (Treasury)..."
+    },
+    {
+      "timestamp": 1782036015714,
+      "type": "enclave",
+      "message": "Host Interface: contracts-call invoke matching target = approver-a, function = evaluate"
+    },
+    {
+      "timestamp": 1782036015716,
+      "type": "enclave",
+      "message": "Approver A (Treasury): Evaluating payout request..."
+    },
+    {
+      "timestamp": 1782036015717,
+      "type": "enclave",
+      "message": "Approver A (Treasury): Approved"
+    },
+    {
+      "timestamp": 1782036015718,
+      "type": "enclave",
+      "message": "Coordinator: Invoking Approver B (Compliance ZK verifier)..."
+    },
+    {
+      "timestamp": 1782036015719,
+      "type": "enclave",
+      "message": "Host Interface: contracts-call invoke matching target = approver-b, function = evaluate"
+    },
+    {
+      "timestamp": 1782036015720,
+      "type": "enclave",
+      "message": "Approver B (Compliance): Running Groth16 ZK-SNARK verifier checks..."
+    },
+    {
+      "timestamp": 1782036015722,
+      "type": "enclave",
+      "message": "Approver B (Compliance): ZK Proof verified. Limit checks passed."
+    },
+    {
+      "timestamp": 1782036015723,
+      "type": "enclave",
+      "message": "Coordinator: Invoking Executor (Blind decrypt & http egress)..."
+    },
+    {
+      "timestamp": 1782036015723,
+      "type": "enclave",
+      "message": "Host Interface: contracts-call invoke matching target = executor, function = execute"
+    },
+    {
+      "timestamp": 1782036015725,
+      "type": "enclave",
+      "message": "Executor: Initiating secure blind execution..."
+    },
+    {
+      "timestamp": 1782036015726,
+      "type": "enclave",
+      "message": "Executor: Decrypting ECIES payload..."
+    },
+    {
+      "timestamp": 1782036015729,
+      "type": "enclave",
+      "message": "Executor: Decrypted ECIES payload successfully"
+    },
+    {
+      "timestamp": 1782036015730,
+      "type": "enclave",
+      "message": "Executor: Firing blind egress POST to: https://treasury.sandbox.test/payout"
+    },
+    {
+      "timestamp": 1782036015730,
+      "type": "enclave",
+      "message": "Executor edge proxy: resolved https://treasury.sandbox.test/payout -> http://127.0.0.1:3009/api/integrations/payout"
+    },
+    {
+      "timestamp": 1782036015731,
+      "type": "enclave",
+      "message": "Executor: Intercepted loopback request to avoid deadlock. Resolving locally."
+    },
+    {
+      "timestamp": 1782036015731,
+      "type": "agent",
+      "message": "Integrations Payout (Direct): Webhook execution successful. TxHash: 0x7091207db49ec19a4430b888b33806b639f378531a2e0376001902c8ea3dfa15"
+    },
+    {
+      "timestamp": 1782036015731,
+      "type": "enclave",
+      "message": "Executor: Payout settled on-chain/target API successfully."
+    },
+    {
+      "timestamp": 1782036015734,
+      "type": "enclave",
+      "message": "Coordinator: Committed transaction payout_2282_qlb7"
+    },
+    {
+      "timestamp": 1782036015735,
+      "type": "agent",
+      "message": "Orchestration complete: Composed action committed successfully!"
+    },
+    {
+      "timestamp": 1782036021073,
+      "type": "agent",
+      "message": "Integrations Verify: Received verification request for VC receipt"
+    },
+    {
+      "timestamp": 1782036021075,
+      "type": "enclave",
+      "message": "Integrations Verify: Receipt receipt_executor_1782036015732 signature verified successfully inside enclave."
+    },
+    {
+      "timestamp": 1782036354085,
+      "type": "agent",
+      "message": "Received incoming compose-action request from client"
+    },
+    {
+      "timestamp": 1782036354085,
+      "type": "enclave",
+      "message": "Coordinator: Starting composed action flow for payoutId: payout_2282_noh8"
+    },
+    {
+      "timestamp": 1782036354087,
+      "type": "enclave",
+      "message": "Coordinator: Starting compose_action..."
+    },
+    {
+      "timestamp": 1782036354095,
+      "type": "enclave",
+      "message": "Coordinator: Staged transaction payout_2282_noh8 as submitting"
+    },
+    {
+      "timestamp": 1782036354095,
+      "type": "enclave",
+      "message": "Coordinator: Invoking Approver A (Treasury)..."
+    },
+    {
+      "timestamp": 1782036354096,
+      "type": "enclave",
+      "message": "Host Interface: contracts-call invoke matching target = approver-a, function = evaluate"
+    },
+    {
+      "timestamp": 1782036354097,
+      "type": "enclave",
+      "message": "Approver A (Treasury): Evaluating payout request..."
+    },
+    {
+      "timestamp": 1782036354098,
+      "type": "enclave",
+      "message": "Approver A (Treasury): Approved"
+    },
+    {
+      "timestamp": 1782036354100,
+      "type": "enclave",
+      "message": "Coordinator: Invoking Approver B (Compliance ZK verifier)..."
+    },
+    {
+      "timestamp": 1782036354101,
+      "type": "enclave",
+      "message": "Host Interface: contracts-call invoke matching target = approver-b, function = evaluate"
+    },
+    {
+      "timestamp": 1782036354103,
+      "type": "enclave",
+      "message": "Approver B (Compliance): Running Groth16 ZK-SNARK verifier checks..."
+    },
+    {
+      "timestamp": 1782036354105,
+      "type": "enclave",
+      "message": "Approver B (Compliance): ZK Proof verified. Limit checks passed."
+    },
+    {
+      "timestamp": 1782036354106,
+      "type": "enclave",
+      "message": "Coordinator: Invoking Executor (Blind decrypt & http egress)..."
+    },
+    {
+      "timestamp": 1782036354107,
+      "type": "enclave",
+      "message": "Host Interface: contracts-call invoke matching target = executor, function = execute"
+    },
+    {
+      "timestamp": 1782036354110,
+      "type": "enclave",
+      "message": "Executor: Initiating secure blind execution..."
+    },
+    {
+      "timestamp": 1782036354111,
+      "type": "enclave",
+      "message": "Executor: Decrypting ECIES payload..."
+    },
+    {
+      "timestamp": 1782036354113,
+      "type": "enclave",
+      "message": "Executor: Decrypted ECIES payload successfully"
+    },
+    {
+      "timestamp": 1782036354114,
+      "type": "enclave",
+      "message": "Executor: Firing blind egress POST to: https://treasury.sandbox.test/payout"
+    },
+    {
+      "timestamp": 1782036354115,
+      "type": "enclave",
+      "message": "Executor edge proxy: resolved https://treasury.sandbox.test/payout -> http://127.0.0.1:3009/api/integrations/payout"
+    },
+    {
+      "timestamp": 1782036354115,
+      "type": "enclave",
+      "message": "Executor: Intercepted loopback request to avoid deadlock. Resolving locally."
+    },
+    {
+      "timestamp": 1782036354116,
+      "type": "agent",
+      "message": "Integrations Payout (Direct): Webhook execution successful. TxHash: 0xc4adaac834f020bb986ffb993bf1c63fcc64d6a07ce3c5ba56dc3ba951d39160"
+    },
+    {
+      "timestamp": 1782036354117,
+      "type": "enclave",
+      "message": "Executor: Payout settled on-chain/target API successfully."
+    },
+    {
+      "timestamp": 1782036354120,
+      "type": "enclave",
+      "message": "Coordinator: Committed transaction payout_2282_noh8"
+    },
+    {
+      "timestamp": 1782036354120,
+      "type": "agent",
+      "message": "Orchestration complete: Composed action committed successfully!"
+    },
+    {
+      "timestamp": 1782036359581,
+      "type": "agent",
+      "message": "Integrations Verify: Received verification request for VC receipt"
+    },
+    {
+      "timestamp": 1782036359582,
+      "type": "enclave",
+      "message": "Integrations Verify: Receipt receipt_executor_1782036354117 signature verified successfully inside enclave."
+    },
+    {
+      "timestamp": 1782037369147,
+      "type": "agent",
+      "message": "Received incoming compose-action request from client"
+    },
+    {
+      "timestamp": 1782037369148,
+      "type": "enclave",
+      "message": "Coordinator: Starting composed action flow for payoutId: payout_2282_1bmn"
+    },
+    {
+      "timestamp": 1782037369150,
+      "type": "enclave",
+      "message": "Coordinator: Starting compose_action..."
+    },
+    {
+      "timestamp": 1782037369153,
+      "type": "enclave",
+      "message": "Coordinator: Staged transaction payout_2282_1bmn as submitting"
+    },
+    {
+      "timestamp": 1782037369154,
+      "type": "enclave",
+      "message": "Coordinator: Invoking Approver A (Treasury)..."
+    },
+    {
+      "timestamp": 1782037369154,
+      "type": "enclave",
+      "message": "Host Interface: contracts-call invoke matching target = approver-a, function = evaluate"
+    },
+    {
+      "timestamp": 1782037369156,
+      "type": "enclave",
+      "message": "Approver A (Treasury): Evaluating payout request..."
+    },
+    {
+      "timestamp": 1782037369157,
+      "type": "enclave",
+      "message": "Approver A (Treasury): Approved"
+    },
+    {
+      "timestamp": 1782037369159,
+      "type": "enclave",
+      "message": "Coordinator: Invoking Approver B (Compliance ZK verifier)..."
+    },
+    {
+      "timestamp": 1782037369160,
+      "type": "enclave",
+      "message": "Host Interface: contracts-call invoke matching target = approver-b, function = evaluate"
+    },
+    {
+      "timestamp": 1782037369161,
+      "type": "enclave",
+      "message": "Approver B (Compliance): Running Groth16 ZK-SNARK verifier checks..."
+    },
+    {
+      "timestamp": 1782037369163,
+      "type": "enclave",
+      "message": "Approver B (Compliance): ZK Proof verified. Limit checks passed."
+    },
+    {
+      "timestamp": 1782037369166,
+      "type": "enclave",
+      "message": "Coordinator: Invoking Executor (Blind decrypt & http egress)..."
+    },
+    {
+      "timestamp": 1782037369166,
+      "type": "enclave",
+      "message": "Host Interface: contracts-call invoke matching target = executor, function = execute"
+    },
+    {
+      "timestamp": 1782037369168,
+      "type": "enclave",
+      "message": "Executor: Initiating secure blind execution..."
+    },
+    {
+      "timestamp": 1782037369169,
+      "type": "enclave",
+      "message": "Executor: Decrypting ECIES payload..."
+    },
+    {
+      "timestamp": 1782037369171,
+      "type": "enclave",
+      "message": "Executor: Decrypted ECIES payload successfully"
+    },
+    {
+      "timestamp": 1782037369172,
+      "type": "enclave",
+      "message": "Executor: Firing blind egress POST to: https://treasury.sandbox.test/payout"
+    },
+    {
+      "timestamp": 1782037369173,
+      "type": "enclave",
+      "message": "Executor edge proxy: resolved https://treasury.sandbox.test/payout -> http://127.0.0.1:3009/api/integrations/payout"
+    },
+    {
+      "timestamp": 1782037369174,
+      "type": "enclave",
+      "message": "Executor: Intercepted loopback request to avoid deadlock. Resolving locally."
+    },
+    {
+      "timestamp": 1782037369174,
+      "type": "agent",
+      "message": "Integrations Payout (Direct): Webhook execution successful. TxHash: 0xf9ed238b39705a68bc696bb35fdb5a5b7dc4b226bf5ba370128bebe13dc4eae1"
+    },
+    {
+      "timestamp": 1782037369175,
+      "type": "enclave",
+      "message": "Executor: Payout settled on-chain/target API successfully."
+    },
+    {
+      "timestamp": 1782037369178,
+      "type": "enclave",
+      "message": "Coordinator: Committed transaction payout_2282_1bmn"
+    },
+    {
+      "timestamp": 1782037369178,
+      "type": "agent",
+      "message": "Orchestration complete: Composed action committed successfully!"
+    },
+    {
+      "timestamp": 1782037374681,
+      "type": "agent",
+      "message": "Integrations Verify: Received verification request for VC receipt"
+    },
+    {
+      "timestamp": 1782037374682,
+      "type": "enclave",
+      "message": "Integrations Verify: Receipt receipt_executor_1782037369175 signature verified successfully inside enclave."
+    }
+  ],
   "dispatchedPayouts": [
     {
       "payoutId": "payout_gen_1782004477213",
@@ -58,6 +461,27 @@
       "amount": 5000,
       "txHash": "0xa788ebcc72edaeb71c8a597bb29410c7be28d165a4a94eda5cd54c1f1c0be1f9",
       "timestamp": 1782004477213
+    },
+    {
+      "payoutId": "payout_gen_1782036015731",
+      "recipient": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "amount": 5000,
+      "txHash": "0x7091207db49ec19a4430b888b33806b639f378531a2e0376001902c8ea3dfa15",
+      "timestamp": 1782036015731
+    },
+    {
+      "payoutId": "payout_gen_1782036354116",
+      "recipient": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "amount": 5000,
+      "txHash": "0xc4adaac834f020bb986ffb993bf1c63fcc64d6a07ce3c5ba56dc3ba951d39160",
+      "timestamp": 1782036354116
+    },
+    {
+      "payoutId": "payout_gen_1782037369174",
+      "recipient": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "amount": 5000,
+      "txHash": "0xf9ed238b39705a68bc696bb35fdb5a5b7dc4b226bf5ba370128bebe13dc4eae1",
+      "timestamp": 1782037369174
     }
   ]
 }

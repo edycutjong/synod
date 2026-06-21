@@ -1,6 +1,6 @@
 {
   "name": "@edycutjong/synod-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Synod Client SDK for atomic multi-agent orchestration, ECIES envelope encryption, and ZK compliance proof generation",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

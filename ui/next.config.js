@@ -5,7 +5,8 @@ const nextConfig = {
       '@bytecodealliance/preview2-shim',
       '@bytecodealliance/jco'
     ]
-  }
+  },
+  devIndicators: false,
 };
 
 module.exports = nextConfig;
