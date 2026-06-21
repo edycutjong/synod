@@ -7,6 +7,17 @@
   "scripts": {
     "build": "tsc"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edycutjong/synod.git"
+  },
+  "bugs": {
+    "url": "https://github.com/edycutjong/synod/issues"
+  },
+  "homepage": "https://github.com/edycutjong/synod#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "typescript": "^5.3.3",
     "@types/node": "^20.11.24"
