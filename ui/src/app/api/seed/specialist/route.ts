@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { readDb, writeDb, addTelemetryLog } from '@/lib/db';
+import * as crypto from 'crypto';
 
 export async function POST(request: Request) {
   try {
@@ -19,7 +20,7 @@ export async function POST(request: Request) {
         isActive: true,
         totalEvaluations: 0,
         totalSlashes: 0,
-        address: `0x${Math.random().toString(16).substr(2, 40)}`,
+        address: `0x${crypto.randomBytes(20).toString('hex')}`,
         ...spec
       });
     }

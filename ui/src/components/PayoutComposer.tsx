@@ -34,7 +34,10 @@ export default function PayoutComposer({ onStartOrchestration, isProcessing }: P
   // the transaction nonce and rejects re-submission of an already submitting/committed id,
   // so a fresh suffix lets reviewers re-run a scenario cleanly — while deploying the SAME
   // id twice (without reloading) visibly triggers the replay guard.
-  const nonce = () => Math.random().toString(36).slice(2, 6);
+  const nonce = () => {
+    const arr = window.crypto.getRandomValues(new Uint32Array(1));
+    return arr[0].toString(36).slice(0, 4);
+  };
 
   const loadScenario = (type: 'veto' | 'happy' | 'abort' | 'outage') => {
     if (type === 'veto') {
