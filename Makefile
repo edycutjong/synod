@@ -1,4 +1,4 @@
-.PHONY: help bootstrap build test lint typecheck ci e2e lighthouse security-scan repo-details
+.PHONY: help bootstrap build test lint typecheck ci e2e lighthouse security-scan repo-details version-patch version-minor version-major
 
 help:
 	@echo "Synod Build and Testing Automation Harness"
@@ -13,6 +13,9 @@ help:
 	@echo "lighthouse       - Run Lighthouse CI audit on the UI dashboard"
 	@echo "security-scan    - Run vulnerability audits and license compliance checks"
 	@echo "repo-details     - Update the GitHub repository details (description, website, topics)"
+	@echo "version-patch    - Bump version by patch (x.y.Z+1)"
+	@echo "version-minor    - Bump version by minor (x.Y+1.0)"
+	@echo "version-major    - Bump version by major (X+1.0.0)"
 
 
 bootstrap:
@@ -47,4 +50,20 @@ security-scan:
 
 repo-details:
 	gh repo edit edycutjong/synod --description "Atomic multi-agent transactional orchestration engine running inside Intel TDX TEE boundary with 100% cryptographic rollback guarantees, powered by Terminal 3 ADK." --homepage "https://synod.edycu.dev" --add-topic "nextjs,react,wasm,tee,intel-tdx,multi-agent,governance,secp256k1,cryptography,hackathon,terminal3"
+
+version-patch:
+	PATH="/opt/homebrew/bin:$$PATH" node scripts/bump-version.js patch
+	git add .
+	git commit -m "chore(release): bump version to $$(PATH="/opt/homebrew/bin:$$PATH" node -p "require('./package.json').version")"
+
+version-minor:
+	PATH="/opt/homebrew/bin:$$PATH" node scripts/bump-version.js minor
+	git add .
+	git commit -m "chore(release): bump version to $$(PATH="/opt/homebrew/bin:$$PATH" node -p "require('./package.json').version")"
+
+version-major:
+	PATH="/opt/homebrew/bin:$$PATH" node scripts/bump-version.js major
+	git add .
+	git commit -m "chore(release): bump version to $$(PATH="/opt/homebrew/bin:$$PATH" node -p "require('./package.json').version")"
+
 
