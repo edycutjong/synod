@@ -3819,7 +3819,21 @@ let _fs;
 async function fetchCompile (url) {
   if (isNode) {
     _fs = _fs || await import('node:fs/promises');
-    return WebAssembly.compile(await _fs.readFile(url));
+    let path = url;
+    if (url instanceof URL && url.protocol !== 'file:') {
+      const { resolve } = await import('node:path');
+      const pathname = url.pathname;
+      const parts = pathname.split('/');
+      let filename = parts[parts.length - 1];
+      
+      // Map hashed WebAssembly assets back to the unhashed source file on disk
+      if (filename.startsWith('coordinator.core.')) {
+        filename = 'coordinator.core.wasm';
+      }
+      
+      path = resolve(process.cwd(), 'src/lib/wasm/coordinator', filename);
+    }
+    return WebAssembly.compile(await _fs.readFile(path));
   }
   return fetch(url).then(WebAssembly.compileStreaming);
 }
