@@ -24,6 +24,7 @@
   ![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=flat&logo=playwright&logoColor=white)
   ![Jest](https://img.shields.io/badge/Jest-C21325?style=flat&logo=jest&logoColor=white)
   [![CI](https://github.com/edycutjong/synod/actions/workflows/ci.yml/badge.svg)](https://github.com/edycutjong/synod/actions/workflows/ci.yml)
+  [![npm sdk version](https://img.shields.io/npm/v/@edycutjong/synod-sdk.svg?style=flat&logo=npm&color=8b5cf6)](https://www.npmjs.com/package/@edycutjong/synod-sdk)
 
 </div>
 
