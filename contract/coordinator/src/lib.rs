@@ -63,6 +63,25 @@ impl exports::synod::agent::contracts::Guest for Component {
         let action_id = compose_req.payout_id.clone();
         let coord_key = format!("synod:coord:{}", action_id);
 
+        // 0. Replay / idempotency guard. A payoutId is the transaction nonce: if one is
+        // already in-flight ("submitting") or finalized ("committed"), re-submitting it
+        // must be rejected so the same payout cannot be dispatched twice. A previously
+        // "aborted" (or unknown) id is allowed through so a vetoed payout can be retried.
+        if let Some(existing_bytes) = host::interfaces::kv_store::get("synod:coord", coord_key.as_bytes())? {
+            if let Ok(existing) = serde_json::from_slice::<SynodActionState>(&existing_bytes) {
+                if existing.status == "submitting" || existing.status == "committed" {
+                    host::interfaces::logging::error(&format!(
+                        "Coordinator: Replay rejected for {} (already {})",
+                        action_id, existing.status
+                    ))?;
+                    return Err(format!(
+                        "Transaction Aborted: payoutId {} already {} (replay rejected)",
+                        action_id, existing.status
+                    ));
+                }
+            }
+        }
+
         // 1. Stage KV Action State -> status = "submitting"
         let action_state = SynodActionState {
             id: action_id.clone(),

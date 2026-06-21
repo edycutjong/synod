@@ -1,9 +1,9 @@
 "use components";
 import { environment, exit as exit$1, stderr } from '@bytecodealliance/preview2-shim/cli';
-import { error, streams } from '@bytecodealliance/preview2-shim/io';
+import { error as error$1, streams } from '@bytecodealliance/preview2-shim/io';
 import { invoke } from 'host:interfaces/contracts-call';
 import { get, put } from 'host:interfaces/kv-store';
-import { info } from 'host:interfaces/logging';
+import { error, info } from 'host:interfaces/logging';
 const { getEnvironment } = environment;
 
 if (getEnvironment=== undefined) {
@@ -28,7 +28,7 @@ if (getStderr=== undefined) {
   throw err;
 }
 
-const { Error: Error$1 } = error;
+const { Error: Error$1 } = error$1;
 
 if (Error$1=== undefined) {
   const err = new Error("unexpectedly undefined local import 'Error$1', was 'Error' available at instantiation?");
@@ -4157,17 +4157,11 @@ task.exit();
 }
 _trampoline4.fnName = 'host:interfaces/logging@2.1.0#info';
 
-const _trampoline5 = function(arg0, arg1, arg2, arg3, arg4, arg5, arg6) {
+const _trampoline5 = function(arg0, arg1, arg2) {
   var ptr0 = arg0;
   var len0 = arg1;
   var result0 = TEXT_DECODER_UTF8.decode(new Uint8Array(memory0.buffer, ptr0, len0));
-  var ptr1 = arg2;
-  var len1 = arg3;
-  var result1 = new Uint8Array(memory0.buffer.slice(ptr1, ptr1 + len1 * 1));
-  var ptr2 = arg4;
-  var len2 = arg5;
-  var result2 = new Uint8Array(memory0.buffer.slice(ptr2, ptr2 + len2 * 1));
-  _debugLog('[iface="host:interfaces/kv-store@2.1.0", function="put"] [Instruction::CallInterface] (sync, @ enter)');
+  _debugLog('[iface="host:interfaces/logging@2.1.0", function="error"] [Instruction::CallInterface] (sync, @ enter)');
   const hostProvided = true;
   
   let parentTask;
@@ -4178,7 +4172,7 @@ const _trampoline5 = function(arg0, arg1, arg2, arg3, arg4, arg5, arg6) {
     const results = createNewCurrentTask({
       componentIdx: -1,
       isAsync: false,
-      entryFnName: 'put',
+      entryFnName: 'error',
       getCallbackFn: () => null,
       callbackFnName: null,
       errHandling: 'result-catch-handler',
@@ -4216,41 +4210,41 @@ const _trampoline5 = function(arg0, arg1, arg2, arg3, arg4, arg5, arg6) {
     ret = { tag: 'ok', val: _withGlobalCurrentTaskMeta({
       componentIdx: task.componentIdx(),
       taskID: task.id(),
-      fn: () => put(result0, result1, result2),
+      fn: () => error(result0),
     })
   };
 } catch (e) {
   ret = { tag: 'err', val: getErrorPayload(e) };
 }
 
-var variant4 = ret;
-switch (variant4.tag) {
+var variant2 = ret;
+switch (variant2.tag) {
   case 'ok': {
-    const e = variant4.val;
-    dataView(memory0).setInt8(arg6 + 0, 0, true);
+    const e = variant2.val;
+    dataView(memory0).setInt8(arg2 + 0, 0, true);
     
     break;
   }
   case 'err': {
-    const e = variant4.val;
-    dataView(memory0).setInt8(arg6 + 0, 1, true);
+    const e = variant2.val;
+    dataView(memory0).setInt8(arg2 + 0, 1, true);
     
     var encodeRes = _utf8AllocateAndEncode(e, realloc0, memory0);
-    var ptr3= encodeRes.ptr;
-    var len3 = encodeRes.len;
+    var ptr1= encodeRes.ptr;
+    var len1 = encodeRes.len;
     
-    dataView(memory0).setUint32(arg6 + 8, len3, true);
-    dataView(memory0).setUint32(arg6 + 4, ptr3, true);
+    dataView(memory0).setUint32(arg2 + 8, len1, true);
+    dataView(memory0).setUint32(arg2 + 4, ptr1, true);
     
     break;
   }
   default: {
-    _debugLog("ERROR: invalid value (expected result as object with 'tag' member)", { value: variant4, valueType: typeof variant4});
+    _debugLog("ERROR: invalid value (expected result as object with 'tag' member)", { value: variant2, valueType: typeof variant2});
     throw new TypeError('invalid variant specified for result');
   }
 }
-_debugLog('[iface="host:interfaces/kv-store@2.1.0", function="put"][Instruction::Return]', {
-  funcName: 'put',
+_debugLog('[iface="host:interfaces/logging@2.1.0", function="error"][Instruction::Return]', {
+  funcName: 'error',
   paramCount: 0,
   async: false,
   postReturn: false
@@ -4258,7 +4252,7 @@ _debugLog('[iface="host:interfaces/kv-store@2.1.0", function="put"][Instruction:
 task.resolve([ret]);
 task.exit();
 }
-_trampoline5.fnName = 'host:interfaces/kv-store@2.1.0#put';
+_trampoline5.fnName = 'host:interfaces/logging@2.1.0#error';
 
 const _trampoline6 = function(arg0, arg1, arg2, arg3, arg4) {
   var ptr0 = arg0;
@@ -4392,6 +4386,109 @@ task.exit();
 _trampoline6.fnName = 'host:interfaces/kv-store@2.1.0#get';
 
 const _trampoline7 = function(arg0, arg1, arg2, arg3, arg4, arg5, arg6) {
+  var ptr0 = arg0;
+  var len0 = arg1;
+  var result0 = TEXT_DECODER_UTF8.decode(new Uint8Array(memory0.buffer, ptr0, len0));
+  var ptr1 = arg2;
+  var len1 = arg3;
+  var result1 = new Uint8Array(memory0.buffer.slice(ptr1, ptr1 + len1 * 1));
+  var ptr2 = arg4;
+  var len2 = arg5;
+  var result2 = new Uint8Array(memory0.buffer.slice(ptr2, ptr2 + len2 * 1));
+  _debugLog('[iface="host:interfaces/kv-store@2.1.0", function="put"] [Instruction::CallInterface] (sync, @ enter)');
+  const hostProvided = true;
+  
+  let parentTask;
+  let task;
+  let subtask;
+  
+  const createTask = () => {
+    const results = createNewCurrentTask({
+      componentIdx: -1,
+      isAsync: false,
+      entryFnName: 'put',
+      getCallbackFn: () => null,
+      callbackFnName: null,
+      errHandling: 'result-catch-handler',
+      callingWasmExport: false,
+    });
+    task = results[0];
+  };
+  
+  taskCreation: {
+    parentTask = getCurrentTask(
+    0,
+    _getGlobalCurrentTaskMeta(0)?.taskID,
+    )?.task;
+    
+    if (!parentTask) {
+      createTask();
+      break taskCreation;
+    }
+    
+    createTask();
+    
+    if (hostProvided) {
+      subtask = parentTask.getLatestSubtask();
+      if (!subtask) {
+        throw new Error(`Missing subtask (in parent task [${parentTask.id()}]) for host import, has the import been lowered? (ensure asyncImports are set properly)`);
+      }
+      task.setParentSubtask(subtask);
+    }
+  }
+  
+  const started = task.enterSync();
+  
+  let ret;
+  try {
+    ret = { tag: 'ok', val: _withGlobalCurrentTaskMeta({
+      componentIdx: task.componentIdx(),
+      taskID: task.id(),
+      fn: () => put(result0, result1, result2),
+    })
+  };
+} catch (e) {
+  ret = { tag: 'err', val: getErrorPayload(e) };
+}
+
+var variant4 = ret;
+switch (variant4.tag) {
+  case 'ok': {
+    const e = variant4.val;
+    dataView(memory0).setInt8(arg6 + 0, 0, true);
+    
+    break;
+  }
+  case 'err': {
+    const e = variant4.val;
+    dataView(memory0).setInt8(arg6 + 0, 1, true);
+    
+    var encodeRes = _utf8AllocateAndEncode(e, realloc0, memory0);
+    var ptr3= encodeRes.ptr;
+    var len3 = encodeRes.len;
+    
+    dataView(memory0).setUint32(arg6 + 8, len3, true);
+    dataView(memory0).setUint32(arg6 + 4, ptr3, true);
+    
+    break;
+  }
+  default: {
+    _debugLog("ERROR: invalid value (expected result as object with 'tag' member)", { value: variant4, valueType: typeof variant4});
+    throw new TypeError('invalid variant specified for result');
+  }
+}
+_debugLog('[iface="host:interfaces/kv-store@2.1.0", function="put"][Instruction::Return]', {
+  funcName: 'put',
+  paramCount: 0,
+  async: false,
+  postReturn: false
+});
+task.resolve([ret]);
+task.exit();
+}
+_trampoline7.fnName = 'host:interfaces/kv-store@2.1.0#put';
+
+const _trampoline8 = function(arg0, arg1, arg2, arg3, arg4, arg5, arg6) {
   var ptr0 = arg0;
   var len0 = arg1;
   var result0 = TEXT_DECODER_UTF8.decode(new Uint8Array(memory0.buffer, ptr0, len0));
@@ -4599,7 +4696,7 @@ _debugLog('[iface="host:interfaces/contracts-call@2.1.0", function="invoke"][Ins
 task.resolve([ret]);
 task.exit();
 }
-_trampoline7.fnName = 'host:interfaces/contracts-call@2.1.0#invoke';
+_trampoline8.fnName = 'host:interfaces/contracts-call@2.1.0#invoke';
 
 const handleTable0 = [T_FLAG, 0];
 handleTable0._createdReps = new Set();
@@ -4610,7 +4707,7 @@ let captureCnt0= 0;
 
 HANDLE_TABLES[0] = handleTable0;
 
-const _trampoline8 = function(arg0, arg1) {
+const _trampoline9 = function(arg0, arg1) {
   var handle1 = arg0;
   
   var rep2 = handleTable0[(handle1 << 1) + 1] & ~T_FLAG;
@@ -4709,9 +4806,9 @@ const _trampoline8 = function(arg0, arg1) {
   task.resolve([ret]);
   task.exit();
 }
-_trampoline8.fnName = 'wasi:io/error@0.2.6#toDebugString';
+_trampoline9.fnName = 'wasi:io/error@0.2.6#toDebugString';
 
-const _trampoline9 = function(arg0, arg1, arg2, arg3) {
+const _trampoline10 = function(arg0, arg1, arg2, arg3) {
   var handle1 = arg0;
   
   var rep2 = handleTable1[(handle1 << 1) + 1] & ~T_FLAG;
@@ -4841,9 +4938,9 @@ _debugLog('[iface="wasi:io/streams@0.2.6", function="[method]output-stream.block
 task.resolve([ret]);
 task.exit();
 }
-_trampoline9.fnName = 'wasi:io/streams@0.2.6#blockingWriteAndFlush';
+_trampoline10.fnName = 'wasi:io/streams@0.2.6#blockingWriteAndFlush';
 
-const _trampoline10 = function(arg0) {
+const _trampoline11 = function(arg0) {
   _debugLog('[iface="wasi:cli/environment@0.2.6", function="get-environment"] [Instruction::CallInterface] (sync, @ enter)');
   const hostProvided = true;
   
@@ -4943,7 +5040,7 @@ const _trampoline10 = function(arg0) {
   task.resolve([ret]);
   task.exit();
 }
-_trampoline10.fnName = 'wasi:cli/environment@0.2.6#getEnvironment';
+_trampoline11.fnName = 'wasi:cli/environment@0.2.6#getEnvironment';
 let exports2;
 let postReturn0;
 let postReturn0Async;
@@ -6009,17 +6106,7 @@ null,
   componentIdx: 0,
   isAsync: false,
   isManualAsync: _trampoline5.manuallyAsync,
-  paramLiftFns: [_liftFlatStringAny,_liftFlatList({
-    elemLiftFn: _liftFlatU8,
-    elemAlign32: 1,
-    elemSize32: 1,
-    typedArray: Uint8Array,
-  }),_liftFlatList({
-    elemLiftFn: _liftFlatU8,
-    elemAlign32: 1,
-    elemSize32: 1,
-    typedArray: Uint8Array,
-  })],
+  paramLiftFns: [_liftFlatStringAny],
   resultLowerFns: [
   _lowerFlatResult({
     caseMetas: [
@@ -6050,17 +6137,7 @@ null,
   componentIdx: 0,
   isAsync: false,
   isManualAsync: _trampoline5.manuallyAsync,
-  paramLiftFns: [_liftFlatStringAny,_liftFlatList({
-    elemLiftFn: _liftFlatU8,
-    elemAlign32: 1,
-    elemSize32: 1,
-    typedArray: Uint8Array,
-  }),_liftFlatList({
-    elemLiftFn: _liftFlatU8,
-    elemAlign32: 1,
-    elemSize32: 1,
-    typedArray: Uint8Array,
-  })],
+  paramLiftFns: [_liftFlatStringAny],
   resultLowerFns: [
   _lowerFlatResult({
     caseMetas: [
@@ -6195,32 +6272,27 @@ null,
   componentIdx: 0,
   isAsync: false,
   isManualAsync: _trampoline7.manuallyAsync,
-  paramLiftFns: [_liftFlatRecord({ fieldMetas: [['targetContract', _liftFlatStringAny, 8, 4],['functionName', _liftFlatStringAny, 8, 4],['input', _liftFlatList({
+  paramLiftFns: [_liftFlatStringAny,_liftFlatList({
     elemLiftFn: _liftFlatU8,
     elemAlign32: 1,
     elemSize32: 1,
     typedArray: Uint8Array,
-  }), 8, 4],], size32: 24, align32: 4 })],
+  }),_liftFlatList({
+    elemLiftFn: _liftFlatU8,
+    elemAlign32: 1,
+    elemSize32: 1,
+    typedArray: Uint8Array,
+  })],
   resultLowerFns: [
   _lowerFlatResult({
     caseMetas: [
-    [ 'ok', _lowerFlatList({
-      elemLowerFn: _lowerFlatU8,
-      elemSize32: 1,
-      elemAlign32: 1,
-    }), 16, 4, 4 ],
-    [ 'err', _lowerFlatVariant({
-      caseMetas: [[ 'not-allowlisted', _lowerFlatStringAny, 8, 4, 2 ],[ 'no-execution-context', null, 0, 0, 0 ],[ 'target-unknown', _lowerFlatStringAny, 8, 4, 2 ],[ 'depth-exceeded', null, 0, 0, 0 ],[ 'reentrant', _lowerFlatStringAny, 8, 4, 2 ],[ 'inner-failed', _lowerFlatStringAny, 8, 4, 2 ],[ 'inner-trapped', _lowerFlatStringAny, 8, 4, 2 ],[ 'encoding-failed', _lowerFlatStringAny, 8, 4, 2 ],],
-      variantSize32: 12,
-      variantAlign32: 4,
-      variantPayloadOffset32: 4,
-      variantFlatCount: 3,
-    } ), 16, 4, 4 ],
+    [ 'ok', null, 12, 4, 4 ],
+    [ 'err', _lowerFlatStringAny, 12, 4, 4 ],
     ],
-    variantSize32: 16,
+    variantSize32: 12,
     variantAlign32: 4,
     variantPayloadOffset32: 4,
-    variantFlatCount: 4,
+    variantFlatCount: 3,
   })
   ],
   hasResultPointer: true,
@@ -6241,32 +6313,27 @@ null,
   componentIdx: 0,
   isAsync: false,
   isManualAsync: _trampoline7.manuallyAsync,
-  paramLiftFns: [_liftFlatRecord({ fieldMetas: [['targetContract', _liftFlatStringAny, 8, 4],['functionName', _liftFlatStringAny, 8, 4],['input', _liftFlatList({
+  paramLiftFns: [_liftFlatStringAny,_liftFlatList({
     elemLiftFn: _liftFlatU8,
     elemAlign32: 1,
     elemSize32: 1,
     typedArray: Uint8Array,
-  }), 8, 4],], size32: 24, align32: 4 })],
+  }),_liftFlatList({
+    elemLiftFn: _liftFlatU8,
+    elemAlign32: 1,
+    elemSize32: 1,
+    typedArray: Uint8Array,
+  })],
   resultLowerFns: [
   _lowerFlatResult({
     caseMetas: [
-    [ 'ok', _lowerFlatList({
-      elemLowerFn: _lowerFlatU8,
-      elemSize32: 1,
-      elemAlign32: 1,
-    }), 16, 4, 4 ],
-    [ 'err', _lowerFlatVariant({
-      caseMetas: [[ 'not-allowlisted', _lowerFlatStringAny, 8, 4, 2 ],[ 'no-execution-context', null, 0, 0, 0 ],[ 'target-unknown', _lowerFlatStringAny, 8, 4, 2 ],[ 'depth-exceeded', null, 0, 0, 0 ],[ 'reentrant', _lowerFlatStringAny, 8, 4, 2 ],[ 'inner-failed', _lowerFlatStringAny, 8, 4, 2 ],[ 'inner-trapped', _lowerFlatStringAny, 8, 4, 2 ],[ 'encoding-failed', _lowerFlatStringAny, 8, 4, 2 ],],
-      variantSize32: 12,
-      variantAlign32: 4,
-      variantPayloadOffset32: 4,
-      variantFlatCount: 3,
-    } ), 16, 4, 4 ],
+    [ 'ok', null, 12, 4, 4 ],
+    [ 'err', _lowerFlatStringAny, 12, 4, 4 ],
     ],
-    variantSize32: 16,
+    variantSize32: 12,
     variantAlign32: 4,
     variantPayloadOffset32: 4,
-    variantFlatCount: 4,
+    variantFlatCount: 3,
   })
   ],
   hasResultPointer: true,
@@ -6288,8 +6355,34 @@ null,
   componentIdx: 0,
   isAsync: false,
   isManualAsync: _trampoline8.manuallyAsync,
-  paramLiftFns: [_liftFlatBorrow.bind(null, 0)],
-  resultLowerFns: [_lowerFlatStringAny],
+  paramLiftFns: [_liftFlatRecord({ fieldMetas: [['targetContract', _liftFlatStringAny, 8, 4],['functionName', _liftFlatStringAny, 8, 4],['input', _liftFlatList({
+    elemLiftFn: _liftFlatU8,
+    elemAlign32: 1,
+    elemSize32: 1,
+    typedArray: Uint8Array,
+  }), 8, 4],], size32: 24, align32: 4 })],
+  resultLowerFns: [
+  _lowerFlatResult({
+    caseMetas: [
+    [ 'ok', _lowerFlatList({
+      elemLowerFn: _lowerFlatU8,
+      elemSize32: 1,
+      elemAlign32: 1,
+    }), 16, 4, 4 ],
+    [ 'err', _lowerFlatVariant({
+      caseMetas: [[ 'not-allowlisted', _lowerFlatStringAny, 8, 4, 2 ],[ 'no-execution-context', null, 0, 0, 0 ],[ 'target-unknown', _lowerFlatStringAny, 8, 4, 2 ],[ 'depth-exceeded', null, 0, 0, 0 ],[ 'reentrant', _lowerFlatStringAny, 8, 4, 2 ],[ 'inner-failed', _lowerFlatStringAny, 8, 4, 2 ],[ 'inner-trapped', _lowerFlatStringAny, 8, 4, 2 ],[ 'encoding-failed', _lowerFlatStringAny, 8, 4, 2 ],],
+      variantSize32: 12,
+      variantAlign32: 4,
+      variantPayloadOffset32: 4,
+      variantFlatCount: 3,
+    } ), 16, 4, 4 ],
+    ],
+    variantSize32: 16,
+    variantAlign32: 4,
+    variantPayloadOffset32: 4,
+    variantFlatCount: 4,
+  })
+  ],
   hasResultPointer: true,
   funcTypeIsAsync: false,
   getCallbackFn: () => null,
@@ -6308,8 +6401,34 @@ null,
   componentIdx: 0,
   isAsync: false,
   isManualAsync: _trampoline8.manuallyAsync,
-  paramLiftFns: [_liftFlatBorrow.bind(null, 0)],
-  resultLowerFns: [_lowerFlatStringAny],
+  paramLiftFns: [_liftFlatRecord({ fieldMetas: [['targetContract', _liftFlatStringAny, 8, 4],['functionName', _liftFlatStringAny, 8, 4],['input', _liftFlatList({
+    elemLiftFn: _liftFlatU8,
+    elemAlign32: 1,
+    elemSize32: 1,
+    typedArray: Uint8Array,
+  }), 8, 4],], size32: 24, align32: 4 })],
+  resultLowerFns: [
+  _lowerFlatResult({
+    caseMetas: [
+    [ 'ok', _lowerFlatList({
+      elemLowerFn: _lowerFlatU8,
+      elemSize32: 1,
+      elemAlign32: 1,
+    }), 16, 4, 4 ],
+    [ 'err', _lowerFlatVariant({
+      caseMetas: [[ 'not-allowlisted', _lowerFlatStringAny, 8, 4, 2 ],[ 'no-execution-context', null, 0, 0, 0 ],[ 'target-unknown', _lowerFlatStringAny, 8, 4, 2 ],[ 'depth-exceeded', null, 0, 0, 0 ],[ 'reentrant', _lowerFlatStringAny, 8, 4, 2 ],[ 'inner-failed', _lowerFlatStringAny, 8, 4, 2 ],[ 'inner-trapped', _lowerFlatStringAny, 8, 4, 2 ],[ 'encoding-failed', _lowerFlatStringAny, 8, 4, 2 ],],
+      variantSize32: 12,
+      variantAlign32: 4,
+      variantPayloadOffset32: 4,
+      variantFlatCount: 3,
+    } ), 16, 4, 4 ],
+    ],
+    variantSize32: 16,
+    variantAlign32: 4,
+    variantPayloadOffset32: 4,
+    variantFlatCount: 4,
+  })
+  ],
   hasResultPointer: true,
   funcTypeIsAsync: false,
   getCallbackFn: () => null,
@@ -6329,46 +6448,8 @@ null,
   componentIdx: 0,
   isAsync: false,
   isManualAsync: _trampoline9.manuallyAsync,
-  paramLiftFns: [_liftFlatBorrow.bind(null, 1),_liftFlatList({
-    elemLiftFn: _liftFlatU8,
-    elemAlign32: 1,
-    elemSize32: 1,
-    typedArray: Uint8Array,
-  })],
-  resultLowerFns: [
-  _lowerFlatResult({
-    caseMetas: [
-    [ 'ok', null, 12, 4, 4 ],
-    [ 'err', _lowerFlatVariant({
-      caseMetas: [[ 'last-operation-failed', _lowerFlatOwn({
-        componentIdx: 0,
-        lowerFn: 
-        function lowerImportedOwnedHost_Error$1(obj) {
-          if (!(obj instanceof Error$1)) {
-            throw new TypeError('Resource error: Not a valid \"Error$1\" resource.');
-          }
-          let handle = obj[symbolRscHandle];
-          if (!handle) {
-            const rep = obj[symbolRscRep] || ++captureCnt0;
-            captureTable0.set(rep, obj);
-            handle = rscTableCreateOwn(handleTable0, rep);
-          }
-          return handle;
-        }
-        ,
-      }), 4, 4, 1 ],[ 'closed', null, 0, 0, 0 ],],
-      variantSize32: 8,
-      variantAlign32: 4,
-      variantPayloadOffset32: 4,
-      variantFlatCount: 2,
-    } ), 12, 4, 4 ],
-    ],
-    variantSize32: 12,
-    variantAlign32: 4,
-    variantPayloadOffset32: 4,
-    variantFlatCount: 3,
-  })
-  ],
+  paramLiftFns: [_liftFlatBorrow.bind(null, 0)],
+  resultLowerFns: [_lowerFlatStringAny],
   hasResultPointer: true,
   funcTypeIsAsync: false,
   getCallbackFn: () => null,
@@ -6377,7 +6458,7 @@ null,
   memoryIdx: 0,
   stringEncoding: 'utf8',
   getMemoryFn: () => memory0,
-  getReallocFn: undefined,
+  getReallocFn: () => realloc0,
   importFn: _trampoline9,
 },
 )) : _lowerImportBackwardsCompat.bind(
@@ -6387,46 +6468,8 @@ null,
   componentIdx: 0,
   isAsync: false,
   isManualAsync: _trampoline9.manuallyAsync,
-  paramLiftFns: [_liftFlatBorrow.bind(null, 1),_liftFlatList({
-    elemLiftFn: _liftFlatU8,
-    elemAlign32: 1,
-    elemSize32: 1,
-    typedArray: Uint8Array,
-  })],
-  resultLowerFns: [
-  _lowerFlatResult({
-    caseMetas: [
-    [ 'ok', null, 12, 4, 4 ],
-    [ 'err', _lowerFlatVariant({
-      caseMetas: [[ 'last-operation-failed', _lowerFlatOwn({
-        componentIdx: 0,
-        lowerFn: 
-        function lowerImportedOwnedHost_Error$1(obj) {
-          if (!(obj instanceof Error$1)) {
-            throw new TypeError('Resource error: Not a valid \"Error$1\" resource.');
-          }
-          let handle = obj[symbolRscHandle];
-          if (!handle) {
-            const rep = obj[symbolRscRep] || ++captureCnt0;
-            captureTable0.set(rep, obj);
-            handle = rscTableCreateOwn(handleTable0, rep);
-          }
-          return handle;
-        }
-        ,
-      }), 4, 4, 1 ],[ 'closed', null, 0, 0, 0 ],],
-      variantSize32: 8,
-      variantAlign32: 4,
-      variantPayloadOffset32: 4,
-      variantFlatCount: 2,
-    } ), 12, 4, 4 ],
-    ],
-    variantSize32: 12,
-    variantAlign32: 4,
-    variantPayloadOffset32: 4,
-    variantFlatCount: 3,
-  })
-  ],
+  paramLiftFns: [_liftFlatBorrow.bind(null, 0)],
+  resultLowerFns: [_lowerFlatStringAny],
   hasResultPointer: true,
   funcTypeIsAsync: false,
   getCallbackFn: () => null,
@@ -6435,7 +6478,7 @@ null,
   memoryIdx: 0,
   stringEncoding: 'utf8',
   getMemoryFn: () => memory0,
-  getReallocFn: undefined,
+  getReallocFn: () => realloc0,
   importFn: _trampoline9,
 },
 );
@@ -6446,12 +6489,46 @@ null,
   componentIdx: 0,
   isAsync: false,
   isManualAsync: _trampoline10.manuallyAsync,
-  paramLiftFns: [],
-  resultLowerFns: [_lowerFlatList({
-    elemLowerFn: _lowerFlatTuple({ elemLowerMetas: [[_lowerFlatStringAny, 8, 4],[_lowerFlatStringAny, 8, 4],], size32: 16, align32: 4 }),
-    elemSize32: 16,
-    elemAlign32: 4,
+  paramLiftFns: [_liftFlatBorrow.bind(null, 1),_liftFlatList({
+    elemLiftFn: _liftFlatU8,
+    elemAlign32: 1,
+    elemSize32: 1,
+    typedArray: Uint8Array,
   })],
+  resultLowerFns: [
+  _lowerFlatResult({
+    caseMetas: [
+    [ 'ok', null, 12, 4, 4 ],
+    [ 'err', _lowerFlatVariant({
+      caseMetas: [[ 'last-operation-failed', _lowerFlatOwn({
+        componentIdx: 0,
+        lowerFn: 
+        function lowerImportedOwnedHost_Error$1(obj) {
+          if (!(obj instanceof Error$1)) {
+            throw new TypeError('Resource error: Not a valid \"Error$1\" resource.');
+          }
+          let handle = obj[symbolRscHandle];
+          if (!handle) {
+            const rep = obj[symbolRscRep] || ++captureCnt0;
+            captureTable0.set(rep, obj);
+            handle = rscTableCreateOwn(handleTable0, rep);
+          }
+          return handle;
+        }
+        ,
+      }), 4, 4, 1 ],[ 'closed', null, 0, 0, 0 ],],
+      variantSize32: 8,
+      variantAlign32: 4,
+      variantPayloadOffset32: 4,
+      variantFlatCount: 2,
+    } ), 12, 4, 4 ],
+    ],
+    variantSize32: 12,
+    variantAlign32: 4,
+    variantPayloadOffset32: 4,
+    variantFlatCount: 3,
+  })
+  ],
   hasResultPointer: true,
   funcTypeIsAsync: false,
   getCallbackFn: () => null,
@@ -6460,7 +6537,7 @@ null,
   memoryIdx: 0,
   stringEncoding: 'utf8',
   getMemoryFn: () => memory0,
-  getReallocFn: () => realloc0,
+  getReallocFn: undefined,
   importFn: _trampoline10,
 },
 )) : _lowerImportBackwardsCompat.bind(
@@ -6470,6 +6547,65 @@ null,
   componentIdx: 0,
   isAsync: false,
   isManualAsync: _trampoline10.manuallyAsync,
+  paramLiftFns: [_liftFlatBorrow.bind(null, 1),_liftFlatList({
+    elemLiftFn: _liftFlatU8,
+    elemAlign32: 1,
+    elemSize32: 1,
+    typedArray: Uint8Array,
+  })],
+  resultLowerFns: [
+  _lowerFlatResult({
+    caseMetas: [
+    [ 'ok', null, 12, 4, 4 ],
+    [ 'err', _lowerFlatVariant({
+      caseMetas: [[ 'last-operation-failed', _lowerFlatOwn({
+        componentIdx: 0,
+        lowerFn: 
+        function lowerImportedOwnedHost_Error$1(obj) {
+          if (!(obj instanceof Error$1)) {
+            throw new TypeError('Resource error: Not a valid \"Error$1\" resource.');
+          }
+          let handle = obj[symbolRscHandle];
+          if (!handle) {
+            const rep = obj[symbolRscRep] || ++captureCnt0;
+            captureTable0.set(rep, obj);
+            handle = rscTableCreateOwn(handleTable0, rep);
+          }
+          return handle;
+        }
+        ,
+      }), 4, 4, 1 ],[ 'closed', null, 0, 0, 0 ],],
+      variantSize32: 8,
+      variantAlign32: 4,
+      variantPayloadOffset32: 4,
+      variantFlatCount: 2,
+    } ), 12, 4, 4 ],
+    ],
+    variantSize32: 12,
+    variantAlign32: 4,
+    variantPayloadOffset32: 4,
+    variantFlatCount: 3,
+  })
+  ],
+  hasResultPointer: true,
+  funcTypeIsAsync: false,
+  getCallbackFn: () => null,
+  getPostReturnFn: () => null,
+  isCancellable: false,
+  memoryIdx: 0,
+  stringEncoding: 'utf8',
+  getMemoryFn: () => memory0,
+  getReallocFn: undefined,
+  importFn: _trampoline10,
+},
+);
+let trampoline11 = _trampoline11.manuallyAsync ? new WebAssembly.Suspending(_lowerImportBackwardsCompat.bind(
+null,
+{
+  trampolineIdx: 11,
+  componentIdx: 0,
+  isAsync: false,
+  isManualAsync: _trampoline11.manuallyAsync,
   paramLiftFns: [],
   resultLowerFns: [_lowerFlatList({
     elemLowerFn: _lowerFlatTuple({ elemLowerMetas: [[_lowerFlatStringAny, 8, 4],[_lowerFlatStringAny, 8, 4],], size32: 16, align32: 4 }),
@@ -6485,29 +6621,54 @@ null,
   stringEncoding: 'utf8',
   getMemoryFn: () => memory0,
   getReallocFn: () => realloc0,
-  importFn: _trampoline10,
+  importFn: _trampoline11,
+},
+)) : _lowerImportBackwardsCompat.bind(
+null,
+{
+  trampolineIdx: 11,
+  componentIdx: 0,
+  isAsync: false,
+  isManualAsync: _trampoline11.manuallyAsync,
+  paramLiftFns: [],
+  resultLowerFns: [_lowerFlatList({
+    elemLowerFn: _lowerFlatTuple({ elemLowerMetas: [[_lowerFlatStringAny, 8, 4],[_lowerFlatStringAny, 8, 4],], size32: 16, align32: 4 }),
+    elemSize32: 16,
+    elemAlign32: 4,
+  })],
+  hasResultPointer: true,
+  funcTypeIsAsync: false,
+  getCallbackFn: () => null,
+  getPostReturnFn: () => null,
+  isCancellable: false,
+  memoryIdx: 0,
+  stringEncoding: 'utf8',
+  getMemoryFn: () => memory0,
+  getReallocFn: () => realloc0,
+  importFn: _trampoline11,
 },
 );
 
 const $init = (() => {
   let gen = (function* _initGenerator () {
     const module0 = fetchCompile(new URL('./coordinator.core.wasm', import.meta.url));
-    const module1 = base64Compile('AGFzbQEAAAABKQZgA39/fwBgB39/f39/f38AYAV/f39/fwBgAn9/AGAEf39/fwBgAX8AAwgHAAECAQMEBQQFAXABBwcHKAgBMAAAATEAAQEyAAIBMwADATQABAE1AAUBNgAGCCRpbXBvcnRzAQAKcwcNACAAIAEgAkEAEQAACxUAIAAgASACIAMgBCAFIAZBAREBAAsRACAAIAEgAiADIARBAhECAAsVACAAIAEgAiADIAQgBSAGQQMRAQALCwAgACABQQQRAwALDwAgACABIAIgA0EFEQQACwkAIABBBhEFAAsALwlwcm9kdWNlcnMBDHByb2Nlc3NlZC1ieQENd2l0LWNvbXBvbmVudAcwLjI0MS4y');
-    const module2 = base64Compile('AGFzbQEAAAABKQZgA39/fwBgB39/f39/f38AYAV/f39/fwBgAn9/AGAEf39/fwBgAX8AAjMIAAEwAAAAATEAAQABMgACAAEzAAEAATQAAwABNQAEAAE2AAUACCRpbXBvcnRzAXABBwcJDQEAQQALBwABAgMEBQYALwlwcm9kdWNlcnMBDHByb2Nlc3NlZC1ieQENd2l0LWNvbXBvbmVudAcwLjI0MS4y');
+    const module1 = base64Compile('AGFzbQEAAAABKQZgA39/fwBgBX9/f39/AGAHf39/f39/fwBgAn9/AGAEf39/fwBgAX8AAwkIAAABAgIDBAUEBQFwAQgIBywJATAAAAExAAEBMgACATMAAwE0AAQBNQAFATYABgE3AAcIJGltcG9ydHMBAAqBAQgNACAAIAEgAkEAEQAACw0AIAAgASACQQERAAALEQAgACABIAIgAyAEQQIRAQALFQAgACABIAIgAyAEIAUgBkEDEQIACxUAIAAgASACIAMgBCAFIAZBBBECAAsLACAAIAFBBREDAAsPACAAIAEgAiADQQYRBAALCQAgAEEHEQUACwAvCXByb2R1Y2VycwEMcHJvY2Vzc2VkLWJ5AQ13aXQtY29tcG9uZW50BzAuMjQxLjI');
+    const module2 = base64Compile('AGFzbQEAAAABKQZgA39/fwBgBX9/f39/AGAHf39/f39/fwBgAn9/AGAEf39/fwBgAX8AAjgJAAEwAAAAATEAAAABMgABAAEzAAIAATQAAgABNQADAAE2AAQAATcABQAIJGltcG9ydHMBcAEICAkOAQBBAAsIAAECAwQFBgcALwlwcm9kdWNlcnMBDHByb2Nlc3NlZC1ieQENd2l0LWNvbXBvbmVudAcwLjI0MS4y');
     ({ exports: exports0 } = yield instantiateCore(yield module1));
     ({ exports: exports1 } = yield instantiateCore(yield module0, {
       'host:interfaces/contracts-call@2.1.0': {
-        invoke: exports0['3'],
+        invoke: exports0['4'],
       },
       'host:interfaces/kv-store@2.1.0': {
         get: exports0['2'],
-        put: exports0['1'],
+        put: exports0['3'],
       },
       'host:interfaces/logging@2.1.0': {
+        error: exports0['1'],
         info: exports0['0'],
       },
       'wasi:cli/environment@0.2.0': {
-        'get-environment': exports0['6'],
+        'get-environment': exports0['7'],
       },
       'wasi:cli/exit@0.2.0': {
         exit: trampoline3,
@@ -6516,11 +6677,11 @@ const $init = (() => {
         'get-stderr': trampoline2,
       },
       'wasi:io/error@0.2.4': {
-        '[method]error.to-debug-string': exports0['4'],
+        '[method]error.to-debug-string': exports0['5'],
         '[resource-drop]error': trampoline0,
       },
       'wasi:io/streams@0.2.4': {
-        '[method]output-stream.blocking-write-and-flush': exports0['5'],
+        '[method]output-stream.blocking-write-and-flush': exports0['6'],
         '[resource-drop]output-stream': trampoline1,
       },
     }));
@@ -6543,6 +6704,7 @@ const $init = (() => {
         '4': trampoline8,
         '5': trampoline9,
         '6': trampoline10,
+        '7': trampoline11,
       },
     }));
     postReturn0 = exports1['cabi_post_synod:agent/contracts@1.0.0#compose-action'];

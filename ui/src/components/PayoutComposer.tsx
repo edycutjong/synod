@@ -30,27 +30,33 @@ export default function PayoutComposer({ onStartOrchestration, isProcessing }: P
 
   const executorPublicKey = '041dfac7ef6d7c24315e526f86e1e022da238bd09cdf3a797956601ac56c643cc035550b63700b7fb8d756365dcfb91910012e5681ceb7b46587a28a7b5b79d207'; // Mock Secp256k1 pubkey
 
+  // Each scenario load gets a fresh payoutId suffix. The coordinator treats payoutId as
+  // the transaction nonce and rejects re-submission of an already submitting/committed id,
+  // so a fresh suffix lets reviewers re-run a scenario cleanly — while deploying the SAME
+  // id twice (without reloading) visibly triggers the replay guard.
+  const nonce = () => Math.random().toString(36).slice(2, 6);
+
   const loadScenario = (type: 'veto' | 'happy' | 'abort' | 'outage') => {
     if (type === 'veto') {
-      setPayoutId('payout_2281');
+      setPayoutId(`payout_2281_${nonce()}`);
       setAmount(15000);
       setLimit(10000);
       setForceHttpFailCode(null);
       setForcePairingFail(false);
     } else if (type === 'happy') {
-      setPayoutId('payout_2282');
+      setPayoutId(`payout_2282_${nonce()}`);
       setAmount(5000);
       setLimit(10000);
       setForceHttpFailCode(null);
       setForcePairingFail(false);
     } else if (type === 'abort') {
-      setPayoutId('payout_abort_3');
+      setPayoutId(`payout_abort_3_${nonce()}`);
       setAmount(12000);
       setLimit(10000);
       setForceHttpFailCode(null);
       setForcePairingFail(true);
     } else if (type === 'outage') {
-      setPayoutId('payout_outage_4');
+      setPayoutId(`payout_outage_4_${nonce()}`);
       setAmount(5000);
       setLimit(10000);
       setForceHttpFailCode(503);

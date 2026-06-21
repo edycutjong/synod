@@ -1,6 +1,6 @@
 import { addTelemetryLog, getKv, setKv, deleteKv } from './db';
 import * as crypto from 'crypto';
-import { execSync } from 'child_process';
+import { execFileSync } from 'child_process';
 
 // 1. host:interfaces/logging@2.1.0
 export function info(message) {
@@ -96,24 +96,25 @@ export function call(request) {
     }
   }
 
-  const headers = [];
+  // Build the curl argv directly and invoke without a shell. The url and header
+  // values are passed as discrete arguments (never interpolated into a command
+  // string), so an attacker-influenced url/header cannot inject shell commands.
+  // The request body is streamed via stdin rather than echo|base64 piping.
+  const args = ['-s', '--max-time', '5', '-w', '\n%{http_code}', '-X', method];
   if (request.headers) {
     for (const [k, v] of request.headers) {
-      headers.push(`-H "${k}: ${v}"`);
+      args.push('-H', `${k}: ${v}`);
     }
   }
-
-  let dataArg = '';
+  let inputBuf;
   if (request.payload) {
-    const payloadBase64 = Buffer.from(request.payload).toString('base64');
-    dataArg = `echo "${payloadBase64}" | base64 -d |`;
+    args.push('--data-binary', '@-');
+    inputBuf = Buffer.from(request.payload);
   }
-
-  // Add max-time 5 to prevent indefinite hanging
-  const curlCmd = `${dataArg} curl -s --max-time 5 -w "\\n%{http_code}" -X ${method} ${headers.join(' ')} ${request.payload ? '--data-binary @-' : ''} "${url}"`;
+  args.push(url);
 
   try {
-    const output = execSync(curlCmd);
+    const output = execFileSync('curl', args, inputBuf ? { input: inputBuf } : undefined);
     const lines = output.toString('binary').split('\n');
     const httpCodeStr = lines.pop().trim();
     const httpCode = parseInt(httpCodeStr, 10) || 200;
