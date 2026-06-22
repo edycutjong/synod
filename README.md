@@ -8,7 +8,7 @@
   <br/>
 
   [![Live Demo](https://img.shields.io/badge/🚀_Live-Demo-06b6d4?style=for-the-badge)](https://synod.edycu.dev)
-  [![Pitch Video](https://img.shields.io/badge/🎬_Pitch-Video-ef4444?style=for-the-badge)](https://youtu.be/your-video)
+  [![Pitch Video](https://img.shields.io/badge/🎬_Pitch-Video-ef4444?style=for-the-badge)](https://youtu.be/W8eQA6kZUAw)
   [![Pitch Deck](https://img.shields.io/badge/📊_Pitch-Deck-f59e0b?style=for-the-badge)](https://synod.edycu.dev/pitch.html)
   [![Built for DoraHacks](https://img.shields.io/badge/DoraHacks-Terminal%203%20ADK%20Hackathon-8b5cf6?style=for-the-badge)](https://dorahacks.io/hackathon/t3adk-launch-2026)
 
